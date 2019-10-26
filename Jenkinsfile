@@ -36,13 +36,13 @@ pipeline {
             }
         }
         stage('Package proxy bundle') {
-            steps {
-              sh "mvn -ntp apigee-enterprise:configure -P${env.APIGEE_PROFILE}"
+            steps { 
+              sh "mvn -ntp apigee-enterprise:configure -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX}"
             }
         }
         stage('Deploy proxy bundle') {
             steps {
-              sh "mvn -ntp apigee-enterprise:deploy -P${env.APIGEE_PROFILE} -Dusername=${APIGEE_CREDS_USR} -Dpassword=${APIGEE_CREDS_PSW}"
+              sh "mvn -ntp apigee-enterprise:deploy -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX} -Dusername=${APIGEE_CREDS_USR} -Dpassword=${APIGEE_CREDS_PSW}"
             }
         }
         stage('Functional Test') {
