@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-Get-Fixer-APIKey" mapIdentifier="fixer-api-key">
+    <DisplayName>KVM-Get-Fixer-APIKey</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <Get assignTo="private.fixer.apiKey" index="1">
+        <Key>
+            <Parameter>apikey</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+
+	<FaultRules>
+		<FaultRule name="Target 422">
+			<Condition>
+				(response.status.code = 422)
+			</Condition>
+			<Step>
+				<Name>AssignMessage.SetResponseContentTypeToJson</Name>
+			</Step>
+			<Step>
+				<Name>ExtractVariables.GetTargetErrorMessage</Name>
+				<Condition>response.content != null</Condition>
+			</Step>
+			<Step>
+				<Name>AssignMessage.SetTarget422ErrorVariables</Name>
+			</Step>
+		</FaultRule>
+		<FaultRule name="Target 404">
+			<Condition>
+				(response.status.code = 404)
+			</Condition>
+			<Step>
+				<Name>AssignMessage.SetTarget404ErrorVariables</Name>
+			</Step>
+		</FaultRule>
+	</FaultRules>
+
+	<Flows>
+		<Flow name="Get Exchange Rates">
+			<Condition>
+				(request.verb = "GET") and 
+				(proxy.pathsuffix MatchesPath "/rates")
+			</Condition>
+			<Request>
+				<Step>
+					<Name>AssignMessage.SetTargetResource</Name>
+				</Step>
+			</Request>
+		</Flow>
+	</Flows>
+
+	<PostFlow>
+		<Request>
+			<Step>
+				<Name>JavaScript.ConfigureTargetRequest</Name>
+			</Step>
+			<Step>
+				<Name>KVM-Get-Fixer-APIKey</Name>
+			</Step>
+			<Step>
+                <Name>AssignMessage.Fixer.APIKey</Name>
+            </Step>
+		</Request>
+	</PostFlow>
+
+	<HTTPTargetConnection>
+		<URL>http://data.fixer.io/api/{flow.target.resource}</URL>
+		<Properties>
+	      <Property name="io.timeout.millis">60000</Property>
+	    </Properties>
+	</HTTPTargetConnection>
+
+</TargetEndpoint>

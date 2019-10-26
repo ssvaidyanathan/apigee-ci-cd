@@ -1,0 +1,5 @@
+node_modules
+target
+.DS_Store
+.gradle
+package-lock.json
