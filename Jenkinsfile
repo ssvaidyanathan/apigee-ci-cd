@@ -50,18 +50,5 @@ pipeline {
             sh "node ./node_modules/cucumber/bin/cucumber.js target/test/integration/features --format json:target/reports.json"
           }
         }
-
-        stage('Maven Version') {
-            steps {
-                sh "mvn --version"
-                sh "echo ${APIGEE_CREDS_USR}"
-                sh "echo ${APIGEE_CREDS_PSW}"
-            }
-        }
-        stage('Node Version') {
-            steps {
-                sh "node -v"
-            }
-        }
     }
 }
