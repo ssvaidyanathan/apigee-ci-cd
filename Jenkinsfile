@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Static Code Analysis, Unit Test and Coverage') {
             steps {
-              sh "mvn -ntp test -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX} -Dcommit=${env.GIT_COMMIT} -Dbranch=${env.GIT_BRANCH} -Duser.name=jenkins"
+              sh "mvn -ntp test -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX} -Dcommit=${env.GIT_COMMIT} -Dbranch=${env.GIT_BRANCH} -Duser.name=${env.APIGEE_PREFIX}"
             }
         }
         stage('Package proxy bundle') {
@@ -49,6 +49,46 @@ pipeline {
           steps {
             sh "node ./node_modules/cucumber/bin/cucumber.js target/test/integration/features --format json:target/reports.json"
           }
+        }
+    }
+
+    post { 
+        always {
+            stage('Coverage Test Report') {
+              steps {
+                publishHTML(target: [
+                                      allowMissing: false,
+                                      alwaysLinkToLastBuild: false,
+                                      keepAll: false,
+                                      reportDir: "coverage/lcov-report",
+                                      reportFiles: 'index.html',
+                                      reportName: 'HTML Report'
+                                    ]
+                            )
+              }
+            }
+            stage('Functional Test Report') {
+                steps {
+                    step([
+                        $class: 'CucumberReportPublisher',
+                        fileExcludePattern: '',
+                        fileIncludePattern: "**/reports.json",
+                        ignoreFailedTests: false,
+                        jenkinsBasePath: '',
+                        jsonReportDirectory: "target",
+                        missingFails: false,
+                        parallelTesting: false,
+                        pendingFails: false,
+                        skippedFails: false,
+                        undefinedFails: false
+                        ])
+                }
+            }
+        }
+        success {
+            if (env.GIT_BRANCH == "master") {
+                //code merge to prod branch
+            }
         }
     }
 }
