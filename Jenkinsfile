@@ -8,7 +8,8 @@ pipeline {
     }
 
     environment {
-       HOME = '.'
+        APIGEE_CREDS = credentials('apigee')
+        HOME = '.'
     }
 
     stages {
@@ -16,7 +17,8 @@ pipeline {
         stage('Maven Version') {
             steps {
                 sh "mvn --version"
-                sh "echo $GIT_BRANCH"
+                sh "echo ${APIGEE_CREDS_USR}"
+                sh "echo ${APIGEE_CREDS_PSW}"
             }
         }
         stage('Node Version') {
