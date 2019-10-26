@@ -54,7 +54,6 @@ pipeline {
 
     post { 
         always {
-          steps {
             publishHTML(target: [
                                   allowMissing: false,
                                   alwaysLinkToLastBuild: false,
@@ -78,7 +77,6 @@ pipeline {
                     skippedFails: false,
                     undefinedFails: false
                     ])
-          }
         }
         success {
             script{
