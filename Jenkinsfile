@@ -54,36 +54,31 @@ pipeline {
 
     post { 
         always {
-            stage('Coverage Test Report') {
-              steps {
-                publishHTML(target: [
-                                      allowMissing: false,
-                                      alwaysLinkToLastBuild: false,
-                                      keepAll: false,
-                                      reportDir: "coverage/lcov-report",
-                                      reportFiles: 'index.html',
-                                      reportName: 'HTML Report'
-                                    ]
-                            )
-              }
-            }
-            stage('Functional Test Report') {
-                steps {
-                    step([
-                        $class: 'CucumberReportPublisher',
-                        fileExcludePattern: '',
-                        fileIncludePattern: "**/reports.json",
-                        ignoreFailedTests: false,
-                        jenkinsBasePath: '',
-                        jsonReportDirectory: "target",
-                        missingFails: false,
-                        parallelTesting: false,
-                        pendingFails: false,
-                        skippedFails: false,
-                        undefinedFails: false
-                        ])
-                }
-            }
+          steps {
+            publishHTML(target: [
+                                  allowMissing: false,
+                                  alwaysLinkToLastBuild: false,
+                                  keepAll: false,
+                                  reportDir: "coverage/lcov-report",
+                                  reportFiles: 'index.html',
+                                  reportName: 'HTML Report'
+                                ]
+                        )
+
+            step([
+                    $class: 'CucumberReportPublisher',
+                    fileExcludePattern: '',
+                    fileIncludePattern: "**/reports.json",
+                    ignoreFailedTests: false,
+                    jenkinsBasePath: '',
+                    jsonReportDirectory: "target",
+                    missingFails: false,
+                    parallelTesting: false,
+                    pendingFails: false,
+                    skippedFails: false,
+                    undefinedFails: false
+                    ])
+          }
         }
         success {
             script{
