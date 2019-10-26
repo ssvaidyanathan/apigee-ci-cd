@@ -86,9 +86,12 @@ pipeline {
             }
         }
         success {
-            if (env.GIT_BRANCH == "master") {
-                //code merge to prod branch
+            script{
+                if (env.GIT_BRANCH == "master") {
+                    //code merge to prod branch
+                }
             }
+            
         }
     }
 }
