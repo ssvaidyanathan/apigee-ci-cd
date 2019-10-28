@@ -9,6 +9,7 @@ pipeline {
 
     environment {
         APIGEE_CREDS = credentials('apigee')
+        APIGEE_DEVPORTAL_CREDS = credentials('apigee-devportal')
         HOME = '.'
     }
 
@@ -81,7 +82,8 @@ pipeline {
         success {
             script{
                 if (env.GIT_BRANCH == "master") {
-                    //code merge to prod branch
+                    //dev portal
+                    sh "mvn -ntp install -Pdevportal -Dportal.username=${APIGEE_DEVPORTAL_CREDS_USR} -Dportal.password=${APIGEE_DEVPORTAL_CREDS_PSW} -Dapigee.smartdocs.config.options=update -f pom-devportal.xml"
                 }
             }
             

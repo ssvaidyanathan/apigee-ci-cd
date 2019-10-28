@@ -35,13 +35,12 @@
         <profile>
             <id>devportal</id>
             <properties>
-                <portal.username>${pusername}</portal.username>
-                <portal.password>${ppassword}</portal.password>
-                <portal.directory>${pdir}</portal.directory>
-                <portal.url>${purl}</portal.url>
-                <portal.path>${ppath}</portal.path>
-                <portal.cronkey>${pcronkey}</portal.cronkey>
-                <portal.format>yaml</portal.format>
+            	<portal.url>http://dev-sai-demo.pantheonsite.io</portal.url><!-- URL of the developer portal. -->
+                <portal.username>${username}</portal.username><!-- Username for the developer portal. -->
+                <portal.password>${password}</portal.password><!-- Password for the developer portal. -->
+                <portal.format>yaml</portal.format><!-- Format of the OpenAPI specs. json|yaml -->
+                <portal.api.doc.format>basic_html</portal.api.doc.format><!-- Format in the portal. Values: basic_html, restricted_html, full_html -->
+                <portal.directory>./openapi</portal.directory> <!-- Directory where OpenAPI specs are accessible. Using ./specs for sample -->
             </properties>
         </profile>
     </profiles>
@@ -49,19 +48,19 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>com.apigee.smartdocs.config</groupId>
-	            <artifactId>apigee-smartdocs-maven-plugin</artifactId>
-	            <version>1.0.7</version>
-	            <executions>
-	                <execution>
-	                    <id>smartdocs-deploy</id>
-	                    <phase>install</phase>
-	                    <goals>
-	                        <goal>apimodel</goal>
-	                    </goals>
-	                </execution>
-	            </executions>
-	        </plugin>
+                <groupId>com.apigee.smartdocs.config</groupId>
+                <artifactId>apigee-smartdocs-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <id>smartdocs-deploy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>apidoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
