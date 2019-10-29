@@ -1,7 +1,9 @@
 pipeline {
+    /*
     parameters {
        choice(name: 'env', choices: ['test', 'prod'], description: 'Pick environment')
     }
+    */
 
     agent {
       dockerfile true
