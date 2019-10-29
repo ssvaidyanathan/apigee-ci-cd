@@ -44,11 +44,11 @@
 				<apigee.env>test</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>saisarantest-eval</apigee.org>
+				<apigee.org>demo1337</apigee.org>
 				<apigee.username>${username}</apigee.username>
 				<apigee.password>${password}</apigee.password>
 				<apigee.options>update</apigee.options>
-				<api.northbound.domain>saisarantest-eval-test.apigee.net</api.northbound.domain>
+				<api.northbound.domain>demo1337-test.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip</api.testtag>
 			</properties>
 		</profile>
@@ -59,12 +59,12 @@
 				<apigee.env>prod</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>saisarantest-eval</apigee.org>
+				<apigee.org>demo1337</apigee.org>
 				<apigee.username>${username}</apigee.username>
 				<apigee.password>${password}</apigee.password>
 				<apigee.options>override</apigee.options>
 				<apigee.override.delay>5</apigee.override.delay>
-				<api.northbound.domain>saisarantest-eval-prod.apigee.net</api.northbound.domain>
+				<api.northbound.domain>demo1337-prod.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
