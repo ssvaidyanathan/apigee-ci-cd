@@ -9,7 +9,7 @@ pipeline {
 
     environment {
         APIGEE_CREDS = credentials('apigee')
-        APIGEE_DEVPORTAL_CREDS = credentials('apigee-devportal')
+        //APIGEE_DEVPORTAL_CREDS = credentials('apigee-devportal')
         HOME = '.'
     }
 
@@ -79,6 +79,7 @@ pipeline {
                     undefinedFails: false
                     ])
         }
+        /*
         success {
             script{
                 if (env.GIT_BRANCH == "master") {
@@ -87,6 +88,6 @@ pipeline {
                 }
             }
             
-        }
+        }*/
     }
 }
