@@ -128,7 +128,6 @@
 									<includes>
 										<include>apiproxy/**</include>
 										<include>test/integration/**</include>
-										<include>edge.json</include>
 									</includes>
 								</resource>
 							</resources>
