@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Configurations') {
             steps {
-              sh "mvn -ntp package -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX} -Dcommit=${env.GIT_COMMIT} -Dbranch=${env.GIT_BRANCH} -Duser.name=jenkins -Dapigee.config.options=update"
+              sh "mvn -ntp apigee-config:keyvaluemaps apigee-config:targetservers apigee-config:caches -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX} -Dcommit=${env.GIT_COMMIT} -Dbranch=${env.GIT_BRANCH} -Duser.name=jenkins -Dapigee.config.options=update -Dapigee.config.dir=./resources/edge"
             }
         }
         stage('Package proxy bundle') {
