@@ -4,3 +4,5 @@ target
 .gradle
 package-lock.json
 coverage/
+.nyc_output
+.vscode
