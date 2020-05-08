@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>apigee</groupId>
-	<artifactId>currency-v1</artifactId>
-	<version>-</version>
-	<name>currency-${deployment.suffix}v1</name>
+	<artifactId>currency</artifactId>
+	<version>v1</version>
+	<name>currency${deployment.suffix}</name>
 	<packaging>pom</packaging>
 	<!-- Test -->
 	<pluginRepositories>
@@ -64,7 +64,7 @@
 				<apigee.password>${password}</apigee.password>
 				<apigee.options>override</apigee.options>
 				<apigee.override.delay>5</apigee.override.delay>
-				<api.northbound.domain>saisarantest-eval-prod.apigee.net</api.northbound.domain>
+				<api.northbound.domain>saisarantest-eval-test.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
@@ -162,7 +162,7 @@
 					<replacements>
 						<replacement>
 							<token>/currency/v1</token>
-							<value>/currency/${deployment.suffix}v1</value>
+							<value>/currency${deployment.suffix}/v1</value>
 						</replacement>
 						<replacement>
 							<token>demo-test.apigee.net</token>
@@ -170,11 +170,7 @@
 						</replacement>
 						<replacement>
 							<token>@description</token>
-							<value>commit ${commit} from ${branch} branch. Deployed by ${user.name}</value>
-						</replacement>
-						<replacement>
-							<token>fixer-api-key-here</token>
-							<value>${fixer-api-key}</value>
+							<value>Commit ${commit} from ${branch} branch. Deployed by ${user.name}</value>
 						</replacement>
 					</replacements>
 				</configuration>
@@ -261,7 +257,7 @@
 						<configuration>
 							<executable>node</executable>
 							<commandlineArgs>
-								node_modules/apigeelint/cli.js -s . -f table.js
+								node_modules/apigeelint/cli.js -s ./apiproxy -f table.js
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -275,21 +271,7 @@
 						<configuration>
 							<executable>node</executable>
 							<commandlineArgs>
-								node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha test/unit
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<!-- Check Code Coverage-->
-					<execution>
-						<id>check-coverage</id>
-						<phase>test</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>node</executable>
-							<commandlineArgs>
-								node_modules/istanbul/lib/cli.js check-coverage
+								node_modules/nyc/bin/nyc.js --reporter=html --reporter=text node_modules/mocha/bin/_mocha test/unit
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -311,7 +293,7 @@
 			</plugin>
 
 			<!-- cleaning dirs -->
-			<!-- <plugin>
+			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.5</version>
 
@@ -331,7 +313,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 

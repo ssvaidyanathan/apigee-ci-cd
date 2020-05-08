@@ -26,9 +26,8 @@ module.exports = function() {
 
 	// cleanup before every scenario
 	this.Before(function(scenario, callback) {
-		this.apickli = new apickli.Apickli('https',
-										   config.currencyApi.domain + config.currencyApi.basepath,
-										   './test/integration/features/fixtures/');
+		var testEndpoint = process.env.TEST_ENDPOINT || config.currencyApi.domain + config.currencyApi.basepath;
+		this.apickli = new apickli.Apickli('https', testEndpoint, './test/integration/features/fixtures/');
 		callback();
 	});
 };
