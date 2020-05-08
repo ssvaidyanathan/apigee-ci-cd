@@ -6,6 +6,7 @@ pipeline {
 
     environment {
         APIGEE_CREDS = credentials('apigee')
+        APIGEE_DEVPORTAL_CREDS = credentials('apigee-devportal')
         HOME = '.'
         APIGEE_ORG = 'strebel-eval'
     }
@@ -68,31 +69,41 @@ pipeline {
         }
     }
 
-    post { 
+    
+
+    post {
+        success {	
+            script{	
+                if (env.GIT_BRANCH == "master") {	
+                    //dev portal	
+                    sh "mvn -ntp install -Pdevportal -Dportal.username=${APIGEE_DEVPORTAL_CREDS_USR} -Dportal.password=${APIGEE_DEVPORTAL_CREDS_PSW} -Dapigee.smartdocs.config.options=update -f pom-devportal.xml"	
+                }	
+            }	
+        }
+
         always {
             publishHTML(target: [
-                                  allowMissing: false,
-                                  alwaysLinkToLastBuild: false,
-                                  keepAll: false,
-                                  reportDir: "coverage",
-                                  reportFiles: 'index.html',
-                                  reportName: 'HTML Report'
-                                ]
-                        )
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: false,
+                reportDir: "coverage",
+                reportFiles: 'index.html',
+                reportName: 'HTML Report'
+            ])
 
             step([
-                    $class: 'CucumberReportPublisher',
-                    fileExcludePattern: '',
-                    fileIncludePattern: "**/reports.json",
-                    ignoreFailedTests: false,
-                    jenkinsBasePath: '',
-                    jsonReportDirectory: "target",
-                    missingFails: false,
-                    parallelTesting: false,
-                    pendingFails: false,
-                    skippedFails: false,
-                    undefinedFails: false
-                    ])
+                $class: 'CucumberReportPublisher',
+                fileExcludePattern: '',
+                fileIncludePattern: "**/reports.json",
+                ignoreFailedTests: false,
+                jenkinsBasePath: '',
+                jsonReportDirectory: "target",
+                missingFails: false,
+                parallelTesting: false,
+                pendingFails: false,
+                skippedFails: false,
+                undefinedFails: false
+                ])
         }
     }
 }
