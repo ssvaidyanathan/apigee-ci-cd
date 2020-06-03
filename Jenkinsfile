@@ -36,6 +36,11 @@ pipeline {
               sh "mvn -ntp test -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX} -Dcommit=${env.GIT_COMMIT} -Dbranch=${env.GIT_BRANCH} -Duser.name=jenkins"
             }
         }
+        stage('Configurations') {
+            steps {
+              sh "mvn -ntp apigee-config:keyvaluemaps apigee-config:targetservers apigee-config:caches -P${env.APIGEE_PROFILE} -Dusername=${APIGEE_CREDS_USR} -Dpassword=${APIGEE_CREDS_PSW} -Dapigee.config.options=update -Dapigee.config.dir=${WORKSPACE}/resources/edge"
+            }
+        }
         stage('Package proxy bundle') {
             steps { 
               sh "mvn -ntp apigee-enterprise:configure -P${env.APIGEE_PROFILE} -Ddeployment.suffix=${env.APIGEE_PREFIX}"
@@ -79,7 +84,7 @@ pipeline {
                     undefinedFails: false
                     ])
         }
-        success {
+        /*success {
             script{
                 if (env.GIT_BRANCH == "master") {
                     //dev portal
@@ -87,6 +92,6 @@ pipeline {
                 }
             }
             
-        }
+        }*/
     }
 }
