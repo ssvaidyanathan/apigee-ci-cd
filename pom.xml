@@ -50,6 +50,8 @@
 				<apigee.username>${username}</apigee.username> <!-- machine user -->
 				<apigee.password>${password}</apigee.password> <!-- machine password -->
 				<apigee.options>update</apigee.options>
+				<apigee.config.dir>./resources/edge</apigee.config.dir> <!-- For config plugin -->
+				<apigee.config.options>update</apigee.config.options> <!-- For config plugin -->
 				<api.northbound.domain>${org}-test.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip</api.testtag>
 			</properties>
@@ -67,6 +69,8 @@
 				<apigee.username>${username}</apigee.username> <!-- machine user -->
 				<apigee.password>${password}</apigee.password> <!-- machine password -->
 				<apigee.options>override</apigee.options>
+				<apigee.config.dir>./resources/edge</apigee.config.dir> <!-- For config plugin -->
+				<apigee.config.options>update</apigee.config.options> <!-- For config plugin -->
 				<apigee.override.delay>5</apigee.override.delay>
 				<api.northbound.domain>${org}-test.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip,~@mock</api.testtag>
