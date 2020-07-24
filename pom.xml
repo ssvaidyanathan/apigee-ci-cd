@@ -44,11 +44,15 @@
 				<apigee.env>test</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>saisarantest-eval</apigee.org>
-				<apigee.username>${username}</apigee.username>
-				<apigee.password>${password}</apigee.password>
+				<apigee.org>${org}</apigee.org>
+				<apigee.authtype>oauth</apigee.authtype> <!-- optional: oauth|basic(default) -->
+				<apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- update to https://zoneName.login.apigee.com/oauth/token -->
+				<apigee.username>${username}</apigee.username> <!-- machine user -->
+				<apigee.password>${password}</apigee.password> <!-- machine password -->
 				<apigee.options>update</apigee.options>
-				<api.northbound.domain>saisarantest-eval-test.apigee.net</api.northbound.domain>
+				<apigee.config.dir>./resources/edge</apigee.config.dir> <!-- For config plugin -->
+				<apigee.config.options>update</apigee.config.options> <!-- For config plugin -->
+				<api.northbound.domain>${org}-test.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip</api.testtag>
 			</properties>
 		</profile>
@@ -59,12 +63,16 @@
 				<apigee.env>prod</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>saisarantest-eval</apigee.org>
-				<apigee.username>${username}</apigee.username>
-				<apigee.password>${password}</apigee.password>
+				<apigee.org>${org}</apigee.org>
+				<apigee.authtype>oauth</apigee.authtype> <!-- optional: oauth|basic(default) -->
+				<apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- update to https://zoneName.login.apigee.com/oauth/token -->
+				<apigee.username>${username}</apigee.username> <!-- machine user -->
+				<apigee.password>${password}</apigee.password> <!-- machine password -->
 				<apigee.options>override</apigee.options>
+				<apigee.config.dir>./resources/edge</apigee.config.dir> <!-- For config plugin -->
+				<apigee.config.options>update</apigee.config.options> <!-- For config plugin -->
 				<apigee.override.delay>5</apigee.override.delay>
-				<api.northbound.domain>saisarantest-eval-prod.apigee.net</api.northbound.domain>
+				<api.northbound.domain>${org}-test.apigee.net</api.northbound.domain>
 				<api.testtag>~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
@@ -76,7 +84,12 @@
 				<plugin>
 					<groupId>io.apigee.build-tools.enterprise4g</groupId>
 					<artifactId>apigee-edge-maven-plugin</artifactId>
-					<version>1.1.5</version>
+					<version>1.2.2</version>
+				</plugin>
+				<plugin>
+					 <groupId>com.apigee.edge.config</groupId>
+			    		<artifactId>apigee-config-maven-plugin</artifactId>
+					<version>1.4.3</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -183,7 +196,7 @@
 			<plugin>
 			    <groupId>com.apigee.edge.config</groupId>
 			    <artifactId>apigee-config-maven-plugin</artifactId>
-			    <version>1.3.8</version>
+			    <version>1.4.3</version>
 			    <executions>
 			        <execution>
 			            <id>create-config-kvm</id>
@@ -212,7 +225,7 @@
 			<plugin>
 				<groupId>io.apigee.build-tools.enterprise4g</groupId>
 				<artifactId>apigee-edge-maven-plugin</artifactId>
-				<version>1.1.7</version>
+				<version>1.2.2</version>
 				<executions>
 					<execution>
 						<id>configure-bundle-step</id>
