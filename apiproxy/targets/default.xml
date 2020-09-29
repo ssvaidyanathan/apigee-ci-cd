@@ -57,7 +57,10 @@
 	</PostFlow>
 
 	<HTTPTargetConnection>
-		<URL>https://api.frankfurter.app</URL>
+		<!-- <URL>https://api.frankfurter.app</URL> -->
+		<LoadBalancer>
+			<Server name="CurrentTarget"/>
+		</LoadBalancer>
 	</HTTPTargetConnection>
 
 </TargetEndpoint>

@@ -1,8 +1,16 @@
 [
     {
-        "name": "Enterprisetarget",
-        "host": "example.com",
-        "isEnabled": true,
-        "port": 8080
-    }
+	    "host": "api.frankfurter.app",
+	    "isEnabled": true,
+	    "name": "CurrentTarget",
+	    "port": 443,
+	    "sSLInfo": {
+	        "ciphers": [],
+	        "clientAuthEnabled": "false",
+	        "enabled": "true",
+	        "ignoreValidationErrors": false,
+	        "protocols": [],
+	        "trustStore": ""
+	    }
+	}
 ]
