@@ -59,7 +59,7 @@
 	<HTTPTargetConnection>
 		<!-- <URL>https://api.frankfurter.app</URL> -->
 		<LoadBalancer>
-			<Server name="CurrentTarget"/>
+			<Server name="CurrencyTarget"/>
 		</LoadBalancer>
 	</HTTPTargetConnection>
 

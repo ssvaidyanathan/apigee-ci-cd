@@ -2,7 +2,7 @@
     {
 	    "host": "api.frankfurter.app",
 	    "isEnabled": true,
-	    "name": "CurrentTarget",
+	    "name": "CurrencyTarget",
 	    "port": 443,
 	    "sSLInfo": {
 	        "ciphers": [],
