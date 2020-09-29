@@ -10,7 +10,7 @@
 				<Name>AssignMessage-SetResponseContentTypeToJson</Name>
 			</Step>
 			<Step>
-				<Name>ExtractVariables-GetTargetErrorMessage</Name>
+				<Name>EV-GetTargetErrorMessage</Name>
 				<Condition>response.content != null</Condition>
 			</Step>
 			<Step>
