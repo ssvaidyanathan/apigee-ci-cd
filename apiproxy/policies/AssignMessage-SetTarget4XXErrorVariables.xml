@@ -1,4 +1,4 @@
-<AssignMessage name="AssignMessage.SetTarget404ErrorVariables">
+<AssignMessage name="AssignMessage-SetTarget4XXErrorVariables">
 
 	<AssignVariable>
 		<Name>flow.apigee.error.code</Name>
@@ -7,7 +7,7 @@
 
 	<AssignVariable>
 		<Name>flow.apigee.error.message</Name>
-		<Value>Invalid date</Value>
+		<Ref>flow.apigee.response.error</Ref>
 	</AssignVariable>
 
 	<AssignVariable>

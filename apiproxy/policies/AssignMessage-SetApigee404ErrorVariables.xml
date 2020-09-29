@@ -1,28 +1,28 @@
-<AssignMessage name="AssignMessage.SetInternalServerErrorVariables">
+<AssignMessage name="AssignMessage-SetApigee404ErrorVariables">
 
 	<AssignVariable>
 		<Name>flow.apigee.error.code</Name>
-		<Value>500.01.001</Value>
+		<Value>400.01.001</Value>
 	</AssignVariable>
 
 	<AssignVariable>
 		<Name>flow.apigee.error.message</Name>
-		<Value>internal server error</Value>
+		<Value>Invalid date</Value>
 	</AssignVariable>
 
 	<AssignVariable>
 		<Name>flow.apigee.error.info</Name>
-		<Value>https://developers.apigee.com</Value>
+		<Value>https://developers.apigee.com/errors/400.02.001</Value>
 	</AssignVariable>
 
 	<AssignVariable>
 		<Name>flow.apigee.error.status</Name>
-		<Value>500</Value>
+		<Value>400</Value>
 	</AssignVariable>
 
 	<AssignVariable>
 		<Name>flow.apigee.error.reason</Name>
-		<Value>Internal Server Error</Value>
+		<Value>Bad Request</Value>
 	</AssignVariable>
 
 </AssignMessage>

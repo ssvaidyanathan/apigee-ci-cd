@@ -1,4 +1,4 @@
-<RaiseFault name="RaiseFault.Json">
+<RaiseFault name="RaiseFault-Json">
 	<FaultResponse>
 		<Set>
 			<Headers>

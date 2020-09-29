@@ -1,4 +1,4 @@
-<AssignMessage name="AssignMessage.SetResponseContentTypeToJson">
+<AssignMessage name="AssignMessage-SetResponseContentTypeToJson">
 	<AssignVariable>
 		<Name>response.header.Content-Type</Name>
 		<Value>application/json</Value>

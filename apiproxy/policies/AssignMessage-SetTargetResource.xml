@@ -1,4 +1,4 @@
-<AssignMessage name="AssignMessage.SetTargetResource">
+<AssignMessage name="AssignMessage-SetTargetResource">
 	<AssignVariable>
 		<Name>flow.target.resource</Name>
 		<Ref>request.queryparam.date</Ref>

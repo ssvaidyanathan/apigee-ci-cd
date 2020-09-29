@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>apigee</groupId>
-	<artifactId>currency-v1</artifactId>
-	<version>-</version>
-	<name>currency-${deployment.suffix}v1</name>
+	<artifactId>currency-v1-123</artifactId>
+	<version>1.0.0</version>
+	<name>currency-v1</name>
 	<packaging>pom</packaging>
 	<!-- Test -->
 	<pluginRepositories>
@@ -97,7 +97,7 @@
 		<plugins>
 
 			<!-- run jslint -->
-			<plugin>
+			<!--<plugin>
 				<groupId>com.cj.jshintmojo</groupId>
 				<artifactId>jshint-maven-plugin</artifactId>
 				<version>1.6.0</version>
@@ -118,7 +118,7 @@
 					<reporter>checkstyle</reporter>
 					<reportFile>target/jshint.html</reportFile>
 				</configuration>
-			</plugin>
+			</plugin> -->
 
 			<!-- copy the full apiproxy folder to target folder -->
 			<plugin>
@@ -324,7 +324,7 @@
 			</plugin>
 
 			<!-- cleaning dirs -->
-			<!-- <plugin>
+			 <plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.5</version>
 
@@ -344,7 +344,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin> 
 		</plugins>
 	</build>
 

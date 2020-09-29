@@ -9,7 +9,7 @@
 			</Condition>
 			<Response>
 				<Step>
-					<Name>AssignMessage.SetLogglyResponse</Name>
+					<Name>AssignMessage-SetLogglyResponse</Name>
 				</Step>
 			</Response>
 		</Flow>

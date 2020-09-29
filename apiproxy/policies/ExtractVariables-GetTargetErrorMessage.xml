@@ -1,4 +1,4 @@
-<ExtractVariables name="ExtractVariables.GetTargetErrorMessage">
+<ExtractVariables name="ExtractVariables-GetTargetErrorMessage">
 	<Source>response</Source>
 	<VariablePrefix>flow.apigee.response</VariablePrefix>
 

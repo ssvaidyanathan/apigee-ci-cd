@@ -7,14 +7,14 @@
 				(response.status.code = 422) or (response.status.code = 424)
 			</Condition>
 			<Step>
-				<Name>AssignMessage.SetResponseContentTypeToJson</Name>
+				<Name>AssignMessage-SetResponseContentTypeToJson</Name>
 			</Step>
 			<Step>
-				<Name>ExtractVariables.GetTargetErrorMessage</Name>
+				<Name>ExtractVariables-GetTargetErrorMessage</Name>
 				<Condition>response.content != null</Condition>
 			</Step>
 			<Step>
-				<Name>AssignMessage.SetTarget4XXErrorVariables</Name>
+				<Name>AssignMessage-SetTarget4XXErrorVariables</Name>
 			</Step>
 		</FaultRule>
 		<FaultRule name="Target 404">
@@ -22,7 +22,7 @@
 				(response.status.code = 404)
 			</Condition>
 			<Step>
-				<Name>AssignMessage.SetTarget404ErrorVariables</Name>
+				<Name>AssignMessage-SetTarget404ErrorVariables</Name>
 			</Step>
 		</FaultRule>
 	</FaultRules>
@@ -35,7 +35,7 @@
 			</Condition>
             		<Request>
                 	<Step>
-                    		<Name>AssignMessage.SetTargetResource</Name>
+                    		<Name>AssignMessage-SetTargetResource</Name>
                 	</Step>
             		</Request>
         	</Flow>
@@ -46,7 +46,7 @@
 			</Condition>
             		<Request>
                 	<Step>
-                   		<Name>AssignMessage.SetTargetResource</Name>
+                   		<Name>AssignMessage-SetTargetResource</Name>
                 	</Step>
             	</Request>
         	</Flow>
