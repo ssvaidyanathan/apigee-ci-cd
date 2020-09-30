@@ -1,4 +1,4 @@
-<RaiseFault name="RaiseFault-Json">
+<RaiseFault name="RF-Json">
 	<FaultResponse>
 		<Set>
 			<Headers>

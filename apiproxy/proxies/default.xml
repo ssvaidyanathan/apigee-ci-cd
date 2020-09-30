@@ -6,20 +6,20 @@
 
 		<Step>
 			<Condition>flow.apigee.error.code = null</Condition>
-			<Name>AssignMessage-SetInternalServerErrorVariables</Name>
+			<Name>AM-SetInternalServerErrorVariables</Name>
 		</Step>
 		<Step>
-			<Name>JavaScript-LogToLoggly</Name>
+			<Name>JS-LogToLoggly</Name>
 		</Step>
 		<Step>
-			<Name>RaiseFault-Json</Name>
+			<Name>RF-Json</Name>
 		</Step>
 	</DefaultFaultRule>
 
 	<PreFlow>
 		<Request>
 			<Step>
-				<Name>AssignMessage-CopyRequest</Name>
+				<Name>AM-CopyRequest</Name>
 			</Step>
 		</Request>
 	</PreFlow>
@@ -41,10 +41,10 @@
 		<Flow name="404">
 			<Request>
 				<Step>
-					<Name>AssignMessage-SetApigee404ErrorVariables</Name>
+					<Name>AM-SetApigee404ErrorVariables</Name>
 				</Step>
 				<Step>
-					<Name>RaiseFault-GoToFaultRules</Name>
+					<Name>RF-GoToFaultRules</Name>
 				</Step>
 			</Request>
 		</Flow>

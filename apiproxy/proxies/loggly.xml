@@ -9,7 +9,7 @@
 			</Condition>
 			<Response>
 				<Step>
-					<Name>AssignMessage-SetLogglyResponse</Name>
+					<Name>AM-SetLogglyResponse</Name>
 				</Step>
 			</Response>
 		</Flow>

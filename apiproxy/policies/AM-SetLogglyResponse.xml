@@ -1,4 +1,4 @@
-<AssignMessage name="AssignMessage-SetLogglyResponse">
+<AssignMessage name="AM-SetLogglyResponse">
 	<AssignTo createNew="true" type="response"></AssignTo>
 	<Set>
 		<StatusCode>200</StatusCode>
