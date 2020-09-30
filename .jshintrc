@@ -89,6 +89,7 @@
     // Custom Globals
     "globals"       : {
         "context": true,
-        "httpClient": true
+        "httpClient": true,
+        "Request": true
     }
 }
