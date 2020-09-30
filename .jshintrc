@@ -87,5 +87,8 @@
     "yui"           : false,    // Yahoo User Interface
 
     // Custom Globals
-    "globals"       : {}        // additional predefined global variables
+    "globals"       : {
+        "context": true,
+        "httpClient": true
+    }
 }

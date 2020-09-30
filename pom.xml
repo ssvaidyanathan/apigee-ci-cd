@@ -274,7 +274,7 @@
 						<configuration>
 							<executable>node</executable>
 							<commandlineArgs>
-								node_modules/apigeelint/cli.js -s . -f table.js
+								node_modules/apigeelint/cli.js -s apiproxy/ -f table.js
 							</commandlineArgs>
 						</configuration>
 					</execution>
